@@ -10,10 +10,9 @@
             [Required(ErrorMessage = "Vehicle type is required.")]
             public string VehicleType { get; set; }
 
-        [Required(ErrorMessage = "Registration number is required.")]
-        [RegularExpression(@"^[A-Za-z0-9-]+$", ErrorMessage = "Invalid registration number.")]
-
-        public string RegNumber { get; set; }
+            [Required(ErrorMessage = "Registration number is required.")]
+            [RegularExpression(@"^[A-Za-z0-9-]+$", ErrorMessage = "Invalid registration number.")]
+            public string RegNumber { get; set; }
 
             [Required(ErrorMessage = "Color is required.")]
             public string Color { get; set; }
