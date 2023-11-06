@@ -21,8 +21,7 @@ namespace Garage_2._0.Models
         [Required(ErrorMessage = "Number of wheels is required.")]
         [Range(0, int.MaxValue, ErrorMessage = "Number of wheels must be a non-negative value.")]
         public int NumWheels { get; set; }
-
-        public DateTime ArrivalTime { get; set; }
+            public DateTime ArrivalTime { get; set; }
         public DateTime ParkingStart { get; set; }
         public DateTime? ParkingEnd { get; set; } 
     }
