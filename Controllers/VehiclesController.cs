@@ -26,6 +26,16 @@ namespace Garage_2._0.Controllers
         //                  View(await _context.Vehicle.ToListAsync()) :
         //                  Problem("Entity set 'Garage_2_0Context.Vehicle'  is null.");
         //}
+        public async Task<IActionResult> IsRegNumberUnique(string regNumber)
+
+        {
+            
+                var isUnique = await _context.Vehicle
+                    .AnyAsync(v => v.RegNumber == regNumber);
+                return Json(!isUnique);
+            
+        }
+
         public async Task<IActionResult> Index()
         {
             if (_context.Vehicle != null)
