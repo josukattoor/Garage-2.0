@@ -19,13 +19,7 @@ namespace Garage_2._0.Controllers
             _context = context;
         }
 
-        // GET: Vehicles
-        //public async Task<IActionResult> Index()
-        //{
-        //      return _context.Vehicle != null ? 
-        //                  View(await _context.Vehicle.ToListAsync()) :
-        //                  Problem("Entity set 'Garage_2_0Context.Vehicle'  is null.");
-        //}
+        
         public async Task<IActionResult> IsRegNumberUnique(string regNumber)
 
         {
