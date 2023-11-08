@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Garage_2._0.Models
@@ -12,6 +13,8 @@ namespace Garage_2._0.Models
 
         [Required(ErrorMessage = "Registration number is required.")]
         [RegularExpression(@"^[A-Za-z0-9-]+$", ErrorMessage = "Invalid registration number.")]
+        [Remote("IsRegNumberUnique", "Vehicles", HttpMethod = "POST", ErrorMessage = "This registration number already exists.")]
+
         public string RegNumber { get; set; }
 
         public string? Color { get; set; } 
