@@ -1,0 +1,17 @@
+﻿@model Garage_2._0.Models.RemoveVehicleViewModel
+
+@{
+    ViewData["Title"] = "Remove Vehicle";
+}
+
+<h1>Remove Vehicle</h1>
+<hr />
+
+<form asp-action="ConfirmRemoval" method="post">
+    <div class="form-group">
+        <label asp-for="RegNumber" class="control-label">Enter the Registration Number:</label>
+        <input asp-for="RegNumber" class="form-control" />
+        <span asp-validation-for="RegNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Check</button>
+</form>
