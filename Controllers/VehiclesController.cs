@@ -19,13 +19,7 @@ namespace Garage_2._0.Controllers
             _context = context;
         }
 
-        // GET: Vehicles
-        //public async Task<IActionResult> Index()
-        //{
-        //      return _context.Vehicle != null ? 
-        //                  View(await _context.Vehicle.ToListAsync()) :
-        //                  Problem("Entity set 'Garage_2_0Context.Vehicle'  is null.");
-        //}
+        
         public async Task<IActionResult> IsRegNumberUnique(string regNumber)
 
         {
@@ -140,6 +134,52 @@ namespace Garage_2._0.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(vehicle);
+        }
+        // GET: Vehicles/Remove
+         public IActionResult Remove()
+        {
+            ViewBag.Message = "Enter the Registration number of the vehicle to remove:";
+            return View();
+        }
+        [HttpPost]
+        [HttpPost]
+        public IActionResult ConfirmRemoval(RemoveVehicleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var vehicle = _context.Vehicle.FirstOrDefault(v => v.RegNumber == model.RegNumber);
+
+                if (vehicle != null)
+                {
+                  
+                    return View("ConfirmRemoval", vehicle);
+                }
+                else
+                {
+                    
+                    TempData["ErrorMessage"] = "The registration number does not exist in the database.";
+
+                    return RedirectToAction("Remove");
+                }
+            }
+
+            return View("Remove", model);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveVehicle(string regNumber)
+        {
+            var vehicle = await _context.Vehicle.FirstOrDefaultAsync(v => v.RegNumber == regNumber);
+
+            if (vehicle != null)
+            {
+                _context.Vehicle.Remove(vehicle);
+                await _context.SaveChangesAsync();
+            }
+            TempData["SuccessMessage"] = "Vehicle removed successfully";
+            return RedirectToAction("Index");
         }
 
         // GET: Vehicles/Delete/5
