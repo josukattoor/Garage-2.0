@@ -1,0 +1,40 @@
+﻿@model List<Vehicle>
+{
+    ViewData["Title"] = "Reciept";
+}
+<h2> Garage Reciept</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>RegNumber</th>
+            <th>Brand</th>
+            <th>ParkingStart</th>
+            <th>ParkingEnd</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vehicle in Model)
+        {
+            <tr>
+                <td>@vehicle.RegNumber</td>
+                <td>@vehicle.Brand</td>
+                <td>@vehicle.ParkingStart</td>
+                <td>@vehicle.ParkingEnd</td>
+                <td>@vehicle.Id</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h1>@ViewData["Title"]</h1>
+
+<p> 
+    <button id="printButton">Print</button>
+</p>
+
+<script>
+    document.getElementById("printButton").addEventListener("click", function (
+        window.print()
+    })
+</script>
