@@ -167,6 +167,11 @@ namespace Garage_2._0.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public ActionResult PrintableForm()
+        {
+            var vehicles = _context.Vehicle.ToList(); //This code should add the vehicles from the list
+            return View(vehicles);
+        }
         private bool VehicleExists(int id)
         {
           return (_context.Vehicle?.Any(e => e.Id == id)).GetValueOrDefault();
