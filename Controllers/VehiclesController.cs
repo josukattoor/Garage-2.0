@@ -84,6 +84,8 @@ namespace Garage_2._0.Controllers
             {
                 _context.Add(vehicle);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Vehicle parked successfully";
+
                 return RedirectToAction(nameof(Index));
             }
             return View(vehicle);
@@ -174,6 +176,7 @@ namespace Garage_2._0.Controllers
             }
             
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
