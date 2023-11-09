@@ -1,0 +1,42 @@
+﻿@model Garage_2._0.Models.Vehicle
+@{
+    ViewData["Title"] = "Reciept";
+}
+<h2> Garage Reciept</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>RegNumber</th>
+            <th>Brand</th>
+            <th>Vehicle Type</th>
+            <th>ParkingStart</th>
+            <th>ParkingEnd</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+       @*  @foreach (var vehicle in Model)
+        { *@
+            <tr>
+            <td>@Html.DisplayFor(model => model.RegNumber)</td>
+            <td>@Html.DisplayFor(model => model.Brand)</td>
+            <td>@Html.DisplayFor(model => model.VehicleType)</td>
+            <td>@Html.DisplayFor(model => model.ParkingStart)</td>
+            <td>@Html.DisplayFor(model => model.ParkingEnd)</td>
+            <td>@Html.DisplayFor(model => model.Id)</td>
+            </tr>
+        @* } *@
+    </tbody>
+</table>
+@* <h1>@ViewData["Title"]</h1> *@
+
+<p> 
+    <button id="printButton">Print</button>
+</p>
+
+<script>
+    document.getElementById("printButton").addEventListener("click", function (
+        window.print()
+    })
+</script>
