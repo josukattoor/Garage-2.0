@@ -14,10 +14,10 @@ html {
 
 html {
     position: relative;
-    min-height: 100%;
+    min-height: 130%;
 }
 
-body {   
+body {
     margin-bottom: 10px;
     background-color: rgba(50, 50, 50, 1.0);
 }
@@ -42,9 +42,8 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: rgba(180, 180, 240, 1.0);
+    background-color: rgba(180, 180, 242, 1.0);
     border-top: 4px solid rgba(0, 0, 0, 0.0);
     text-align: center;
     padding: 5px 0; /* Justera vid behov */
 }
-

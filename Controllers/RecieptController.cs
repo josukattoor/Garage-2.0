@@ -1,4 +1,5 @@
 ﻿using Garage_2._0.Data;
+using Garage_2._0.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +10,40 @@ namespace Garage_2._0.Controllers
         // GET: RecieptController
 
         private readonly Garage_2_0Context _context;
-
-
-        public ActionResult DisplayReciept(int VehicleId)
+        public RecieptController(Garage_2_0Context context)
         {
-            var customer = _context.Vehicle.Find(VehicleId);
-            return View(customer);
+            _context = context;
+        }
+
+        public ActionResult DisplayReciept()
+        {
+            ViewBag.Message = "Enter the Registration number of the vehicle to print the receipt:";
+            return View();
+            //var customer = _context.Vehicle.Find(VehicleId);
+            //return View(customer);
+        }
+        public IActionResult PrintableForm(RemoveVehicleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var vehicle = _context.Vehicle.FirstOrDefault(v => v.RegNumber == model.RegNumber);
+
+                if (vehicle != null)
+                {
+
+                    return View("PrintableForm", vehicle);
+                }
+                else
+                {
+
+                    TempData["ErrorMessage"] = "The registration number does not exist in the database.";
+
+                    // return RedirectToAction("Remove");
+                }
+            }
+
+            return View("PrintableForm", model);
         }
         public ActionResult Index()
         {

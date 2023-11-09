@@ -1,0 +1,17 @@
+﻿@model Garage_2._0.Models.RemoveVehicleViewModel
+
+@{
+    ViewData["Title"] = "Print Receipt";
+}
+
+<h1>Print the parking receipt</h1>
+<hr />
+
+<form asp-action="PrintableForm" method="post">
+    <div class="form-group">
+        <label asp-for="RegNumber" class="control-label">Enter the Registration Number:</label>
+        <input asp-for="RegNumber" class="form-control" />
+        <span asp-validation-for="RegNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Print Receipt</button>
+</form>
